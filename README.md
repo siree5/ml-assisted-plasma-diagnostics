@@ -175,7 +175,7 @@ The complete **Flexible Atomic Code (FAC)** implementation and research simulati
 
 ---
 
-## 👩‍💻 Author
+## Author
 
 **Sireesha Teegala**
 
