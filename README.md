@@ -65,9 +65,15 @@ Once trained, the model predicts plasma parameters directly from spectral data, 
 
 # Model Performance
 
+The Collisional-Radiative (CR) model provides accurate plasma diagnostics but requires solving complex coupled rate equations for every new plasma condition, resulting in significant computational overhead.
+
+To improve computational efficiency, a **Random Forest Regression** model was trained on CR-model-generated synthetic spectra. The trained model learns the relationship between normalized spectral intensities and electron temperature, enabling rapid parameter estimation without repeatedly solving the underlying physics-based equations.
+
+
 <p align="center">
   <img src="./figures/RF_Prediction.png" alt="Random Forest Prediction Results" width="650"/>
 </p>
+
 
 ### Performance Metrics
 
@@ -79,15 +85,7 @@ Once trained, the model predicts plasma parameters directly from spectral data, 
 
 ---
 
-## Insights
-
-### Why Random Forest?
-
-Traditional plasma diagnostics require solving coupled Collisional-Radiative equations for every new plasma condition, making the process computationally expensive.
-
-Random Forest learns the nonlinear relationship between spectral intensities and electron temperature from physics-generated data, enabling rapid predictions without rerunning the CR model.
-
-### Key Findings
+## Key Findings
 
 - Achieved an **R² score of 0.9927**, indicating excellent predictive performance.
 - The predicted temperatures closely match the true values, demonstrating strong model generalization.
@@ -113,11 +111,3 @@ Random Forest learns the nonlinear relationship between spectral intensities and
 This repository contains the machine learning workflow, processed datasets, and visualizations.
 
 The complete Flexible Atomic Code (FAC) implementation and research simulation source code are not included, as they form part of ongoing academic research.
-
----
-
-## Author
-
-**Sireesha Teegala**
-
-B.Tech, Indian Institute of Technology Roorkee
