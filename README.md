@@ -1,25 +1,24 @@
-# Machine Learning Assisted Plasma Diagnostics using Collisional-Radiative Modeling
+# Machine Learning Assisted Plasma Diagnostics
 
-> Undergraduate Research Project | Indian Institute of Technology Roorkee
+> Physics-Informed Machine Learning | Indian Institute of Technology Roorkee
 
 ## Project Overview
 
-This project presents a **physics-informed machine learning workflow** for plasma diagnostics by combining a **Collisional-Radiative (CR) model** with **Random Forest Regression**.
+This project explores the application of **Machine Learning** to accelerate plasma diagnostics by combining **physics-based simulations** with **Random Forest Regression**.
 
-A CR model was developed to simulate emission spectra of singly ionized aluminium (Al II) plasma under different plasma conditions. The generated synthetic spectra were validated against experimental observations and subsequently used to train a machine learning model for rapid electron temperature prediction.
+A **Collisional-Radiative (CR) model** was first used to generate synthetic emission spectra of singly ionized aluminium (Al II) under different plasma conditions. These spectra were then used to train a supervised machine learning model capable of predicting **electron temperature** directly from spectral intensities.
 
-Unlike conventional plasma diagnostics that repeatedly solve computationally expensive CR equations, the trained ML model predicts plasma parameters directly from spectral intensities, enabling significantly faster diagnostics.
+The objective is to replace computationally intensive CR-model calculations with a fast and accurate ML-based prediction pipeline.
 
 ---
 
 ## Objectives
 
-- Develop a Collisional-Radiative (CR) model for Al II plasma.
-- Compare theoretical emission spectra with experimental measurements.
-- Estimate plasma electron temperature using deviation parameter analysis.
-- Generate a synthetic spectral dataset for machine learning.
-- Train a Random Forest Regression model for rapid electron temperature prediction.
-- Demonstrate a physics-informed approach for accelerated plasma diagnostics.
+- Generate synthetic plasma spectra using a Collisional-Radiative model.
+- Build a labeled dataset for supervised learning.
+- Train a Random Forest Regression model.
+- Predict plasma electron temperature from emission spectra.
+- Demonstrate a physics-informed machine learning workflow.
 
 ---
 
@@ -28,107 +27,49 @@ Unlike conventional plasma diagnostics that repeatedly solve computationally exp
 - Python
 - NumPy
 - Pandas
-- Matplotlib
 - Scikit-learn
+- Matplotlib
 - Jupyter Notebook
 - Flexible Atomic Code (FAC)
 
 ---
 
-## 🔄 Project Workflow
+## Workflow
 
 ```text
-Experimental Spectra
-        │
-        ▼
-Collisional-Radiative Model
-        │
-        ▼
-Synthetic Spectral Database
-        │
-        ▼
+Physics-Based Simulation (CR Model)
+                │
+                ▼
+Synthetic Spectral Dataset
+                │
+                ▼
 Feature Engineering
-(Normalized Line Intensities)
-        │
-        ▼
+(Normalized Intensities)
+                │
+                ▼
 Random Forest Regression
-        │
-        ▼
+                │
+                ▼
 Electron Temperature Prediction
 ```
 
 ---
 
-#  Results & Insights
+# Machine Learning Pipeline
 
-## 1️⃣ CR Model Validation
+Instead of repeatedly solving computationally expensive Collisional-Radiative equations for every plasma condition, a Random Forest Regression model learns the relationship between normalized spectral intensities and electron temperature.
 
-<p align="center">
-<img src="figures/Experimental_vs_CR_Model.png" width="850">
-</p>
-
-### Why is this important?
-
-Before applying machine learning, the underlying physics model must accurately reproduce experimental plasma behavior. This comparison validates the reliability of the generated synthetic data.
-
-### Key Insights
-
-- The CR model closely follows the experimental normalized emission spectra across all delay times (700–2000 ns).
-- Strong transitions such as **624.34 nm** and **705.66 nm** are accurately reproduced.
-- Minor deviations are expected due to experimental uncertainties and modeling approximations.
-- The close agreement confirms that the generated spectra are physically meaningful and suitable for machine learning.
-
-### Impact
-
-✔ Validates the accuracy of the physics-based model.
-
-✔ Reduces dependence on large experimental datasets by generating reliable synthetic training data.
+Once trained, the model predicts plasma parameters directly from spectral data, significantly reducing computation time while maintaining high accuracy.
 
 ---
 
-## 2️⃣ Electron Temperature Estimation
+# 📈 Model Performance
 
 <p align="center">
-<img src="figures/Deviation_vs_Temperature.png" width="850">
+<img src="figures/RF_Predictions.png" width="650">
 </p>
 
-### Why is this important?
-
-Electron temperature is one of the most critical plasma parameters.
-
-Instead of manually estimating it, the deviation parameter identifies the temperature at which the theoretical spectrum best matches the experimental observations.
-
-### Key Insights
-
-- The deviation curves exhibit a clear global minimum.
-- Estimated electron temperatures:
-  - **1.77 eV** at **0.3 mm, 2000 ns**
-  - **1.62 eV** at **1.6 mm, 1500 ns**
-- The sharp minima demonstrate the sensitivity of spectral intensities to changes in electron temperature.
-
-### Impact
-
-✔ Enables accurate plasma diagnostics using spectroscopy.
-
-✔ Generates labeled data required for supervised machine learning.
-
----
-
-## Physics-Informed Machine Learning
-
-<p align="center">
-<img src="figures/RF_Predictions.png" width="600">
-</p>
-
-### Why Machine Learning?
-
-Although the CR model provides accurate plasma diagnostics, solving coupled population balance equations for every new plasma condition is computationally intensive.
-
-To overcome this limitation, CR-model-generated synthetic spectra were used to train a **Random Forest Regression** model that learns the relationship between normalized spectral intensities and electron temperature.
-
-Once trained, the model predicts electron temperature directly from spectral data without repeatedly solving the CR equations.
-
-### Model Performance
+### Performance Metrics
 
 | Metric | Value |
 |---------|------:|
@@ -136,42 +77,42 @@ Once trained, the model predicts electron temperature directly from spectral dat
 | R² Score | **0.9927** |
 | Mean Squared Error | **5.25 × 10⁻⁴** |
 
-### Key Insights
+---
 
-- Predicted temperatures closely align with the actual values, indicating excellent predictive performance.
-- The near-diagonal distribution demonstrates minimal prediction error across the test dataset.
-- The Random Forest model effectively captures the nonlinear relationship between spectral intensities and electron temperature.
+## Insights
 
-### Impact
+### Why Random Forest?
 
-✔ Eliminates repeated computationally expensive CR-model simulations.
+Traditional plasma diagnostics require solving coupled Collisional-Radiative equations for every new plasma condition, making the process computationally expensive.
 
-✔ Enables significantly faster plasma parameter estimation.
+Random Forest learns the nonlinear relationship between spectral intensities and electron temperature from physics-generated data, enabling rapid predictions without rerunning the CR model.
 
-✔ Demonstrates the feasibility of real-time plasma diagnostics using physics-guided machine learning.
+### Key Findings
+
+- Achieved an **R² score of 0.9927**, indicating excellent predictive performance.
+- The predicted temperatures closely match the true values, demonstrating strong model generalization.
+- The low Mean Squared Error (**5.25 × 10⁻⁴**) reflects minimal prediction error.
+- The trained model significantly reduces computation time compared to traditional simulation-based diagnostics.
+- Demonstrates how **physics-informed machine learning** can accelerate scientific workflows while preserving prediction accuracy.
 
 ---
 
 # Project Highlights
 
-- Developed a **Collisional-Radiative (CR) model** for Al II plasma diagnostics.
-- Validated theoretical emission spectra against experimental observations.
-- Generated a synthetic spectral dataset using physics-based simulations.
-- Built a **Random Forest Regression** model for plasma electron temperature prediction.
+- Developed a **physics-informed machine learning pipeline** for plasma diagnostics.
+- Generated synthetic training data using a Collisional-Radiative model.
+- Engineered spectral intensity features for regression modeling.
+- Built and evaluated a Random Forest Regression model.
 - Achieved **R² = 0.9927** with low prediction error.
-- Demonstrated a **physics-informed machine learning pipeline** for accelerating plasma diagnostics.
+- Demonstrated the potential for rapid, data-driven plasma parameter estimation.
 
+---
 
 ## ⚠️ Note
 
-This repository includes:
+This repository contains the machine learning workflow, processed datasets, and visualizations.
 
-- Data visualization notebooks
-- Machine learning workflow
-- Processed datasets
-- Research figures
-
-The complete **Flexible Atomic Code (FAC)** implementation and research simulation source code are **not included**, as they form part of ongoing academic research.
+The complete Flexible Atomic Code (FAC) implementation and research simulation source code are not included, as they form part of ongoing academic research.
 
 ---
 
