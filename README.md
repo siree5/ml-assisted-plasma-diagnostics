@@ -108,6 +108,6 @@ To improve computational efficiency, a **Random Forest Regression** model was tr
 
 ## ⚠️ Note
 
-This repository contains the machine learning workflow, processed datasets, and visualizations.
+This repository contains the machine learning workflow, and visualizations.
 
 The complete Flexible Atomic Code (FAC) implementation and research simulation source code are not included, as they form part of ongoing academic research.
