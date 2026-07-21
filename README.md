@@ -66,7 +66,7 @@ Once trained, the model predicts plasma parameters directly from spectral data, 
 # Model Performance
 
 <p align="center">
-<img src="figures/RF_Predictions.png" width="650">
+  <img src="./figures/RF_Prediction.png" alt="Random Forest Prediction Results" width="650"/>
 </p>
 
 ### Performance Metrics
